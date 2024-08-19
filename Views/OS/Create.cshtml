@@ -1,0 +1,41 @@
+﻿@model OSModel
+
+<h2>Cadastrar Nova OS</h2>
+
+<form asp-action="Create">
+    <div class="form-group">
+        <label asp-for="NumeroOS" class="control-label"></label>
+        <input asp-for="NumeroOS" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="TituloServico" class="control-label"></label>
+        <input asp-for="TituloServico" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="CNPJ" class="control-label"></label>
+        <input asp-for="CNPJ" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="NomeDoCliente" class="control-label"></label>
+        <input asp-for="NomeDoCliente" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="CPF" class="control-label"></label>
+        <input asp-for="CPF" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="NomeDoPrestador" class="control-label"></label>
+        <input asp-for="NomeDoPrestador" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="DataExecucaoServico" class="control-label"></label>
+        <input asp-for="DataExecucaoServico" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="ValorDoServico" class="control-label"></label>
+        <input asp-for="ValorDoServico" class="form-control" />
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Salvar" class="btn btn-primary" />
+    </div>
+</form>

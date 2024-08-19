@@ -1,0 +1,36 @@
+﻿
+@model IEnumerable<OSModel>
+
+<h2>Listagem de OS</h2>
+<p>
+    <a href="@Url.Action("Create")">Criar Nova OS</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>NumeroOS</th>
+            <th>TituloServico</th>
+            <th>CNPJ</th>
+            <th>NomeDoCliente</th>
+            <th>CPF</th>
+            <th>NomeDoPrestador</th>
+            <th>DataExecucaoServico</th>
+            <th>ValorDoServico</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+                <tr>
+                    <td>@item.NumeroOS</td>
+                    <td>@item.TituloServico</td>
+                    <td>@item.CNPJ</td>
+                    <td>@item.NomeDoCliente</td>
+                    <td>@item.CPF</td>
+                    <td>@item.NomeDoPrestador</td>
+                    <td>@item.DataExecucaoServico</td>
+                    <td>@item.ValorDoServico</td>
+                </tr>
+        }
+    </tbody>
+</table>
