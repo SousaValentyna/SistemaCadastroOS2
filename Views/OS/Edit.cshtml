@@ -51,11 +51,11 @@
                 </div>
                 <div class="form-group">
                     <label asp-for="ValorDoServico" class="control-label">Valor do Serviço</label>
-                    <input asp-for="ValorDoServico" class="form-control"/>
+                    <input asp-for="ValorDoServico" class="form-control" type="number" step="0.01" />
                     <span asp-validation-for="ValorDoServico" class="text-danger"></span>
                 </div>
                 <div class="form-group gap-2 d-flex justify-content-end">
-                    <input type="submit" value="Salvar" class="btn mt-3" style="background-color: #8fbc8f; color: white;" /> 
+                    <input type="submit" value="Salvar" class="btn mt-3" style="background-color: #8fbc8f; color: white;" />
                     <a asp-action="Index" class="btn mt-3" style="background-color: #FF1493; color: white;">Cancelar</a>
                 </div>
             </form>
