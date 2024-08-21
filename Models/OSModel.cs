@@ -27,7 +27,7 @@ public class OSModel
 
         [Required]
         [DataType(DataType.Currency)]
-        public decimal ValorDoServico { get; set; }
+        public double ValorDoServico { get; set; }
     }
 
 

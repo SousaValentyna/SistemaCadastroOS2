@@ -1,0 +1,68 @@
+﻿@model OSModel
+
+@{
+    ViewData["Title"] = "Editar OS";
+}
+
+<h2 class="mt-2">Editar Ordem de Serviço</h2>
+<h4 class="mt-1">Atualize os dados da Ordem de Serviço abaixo:</h4>
+<div>
+    <h5>Ordem de Serviço</h5>
+    <hr />
+    <div class="row">
+        <div class="col-md-12">
+            <form asp-action="Edit">
+                <div class="form-group">
+                    <label asp-for="NumeroOS" class="control-label">Numero da OS</label>
+                    <input asp-for="NumeroOS" class="form-control" readonly />
+                    <span asp-validation-for="NumeroOS" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="TituloServico" class="control-label">Titulo do Serviço</label>
+                    <input asp-for="TituloServico" class="form-control" />
+                    <span asp-validation-for="TituloServico" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="CNPJ" class="control-label">CNPJ</label>
+                    <input asp-for="CNPJ" class="form-control" />
+                    <span asp-validation-for="CNPJ" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="NomeDoCliente" class="control-label">Nome do Cliente</label>
+                    <input asp-for="NomeDoCliente" class="form-control" />
+                    <span asp-validation-for="NomeDoCliente" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="CPF" class="control-label">CPF</label>
+                    <input asp-for="CPF" class="form-control" />
+                    <span asp-validation-for="CPF" class="text-danger"></span>
+                </div>
+                <div class="form-group d-flex flex-row justify-content-between">
+                    <div class="d-flex flex-column w-100 me-2">
+                        <label asp-for="NomeDoPrestador" class="control-label">Nome do Prestador</label>
+                        <input asp-for="NomeDoPrestador" class="form-control w-100" />
+                        <span asp-validation-for="NomeDoPrestador" class="text-danger"></span>
+                    </div>
+                    <div class="d-flex flex-column">
+                        <label asp-for="DataExecucaoServico" class="control-label">Data de Execução do Serviço</label>
+                        <input asp-for="DataExecucaoServico" class="form-control" />
+                        <span asp-validation-for="DataExecucaoServico" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ValorDoServico" class="control-label">Valor do Serviço</label>
+                    <input asp-for="ValorDoServico" class="form-control"/>
+                    <span asp-validation-for="ValorDoServico" class="text-danger"></span>
+                </div>
+                <div class="form-group gap-2 d-flex justify-content-end">
+                    <input type="submit" value="Salvar" class="btn mt-3" style="background-color: #8fbc8f; color: white;" /> 
+                    <a asp-action="Index" class="btn mt-3" style="background-color: #FF1493; color: white;">Cancelar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}
