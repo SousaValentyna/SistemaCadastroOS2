@@ -11,9 +11,24 @@ public class OSController : Controller
     }
 
     // GET: OS
-    public async Task<IActionResult> Index()
+    public async Task<IActionResult> Index(string searchString)
     {
-        return View(await _context.OSModels.ToListAsync());
+        // Mantém o valor da pesquisa atual na ViewData para que o campo de pesquisa mantenha o valor
+        ViewData["CurrentFilter"] = searchString;
+
+        // Recupera todos os OSModels do banco de dados
+        var osModels = from os in _context.OSModels
+                       select os;
+
+        // Se a string de busca não for nula ou vazia, filtra os resultados
+        if (!string.IsNullOrEmpty(searchString))
+        {
+            osModels = osModels.Where(s => s.NumeroOS.ToString().Contains(searchString)
+                                           || s.TituloServico.Contains(searchString));
+        }
+
+        // Retorna a View com os dados filtrados ou todos os dados se a string de busca estiver vazia
+        return View(await osModels.ToListAsync());
     }
 
     // GET: OS/Create
@@ -29,7 +44,11 @@ public class OSController : Controller
     {
         if (ModelState.IsValid)
         {
+            // Ajuste de timezone
             oSModel.DataExecucaoServico = DateTime.SpecifyKind(oSModel.DataExecucaoServico, DateTimeKind.Utc);
+
+            // Gerar o NumeroOS automaticamente
+            oSModel.NumeroOS = await GenerateNumeroOS();
 
             _context.Add(oSModel);
             await _context.SaveChangesAsync();
@@ -37,7 +56,6 @@ public class OSController : Controller
         }
         return View(oSModel);
     }
-
 
     // GET: OS/Edit/5
     public async Task<IActionResult> Edit(int? id)
@@ -91,7 +109,7 @@ public class OSController : Controller
         return View(oSModel);
     }
 
-    // GET: OS/Delete/5.
+    // GET: OS/Delete/5
     public async Task<IActionResult> Deletar(int? id)
     {
         if (id == null)
@@ -120,8 +138,17 @@ public class OSController : Controller
         return RedirectToAction(nameof(Index));
     }
 
+    // Método auxiliar para verificar se o modelo existe
     private bool OSModelExists(int id)
     {
         return _context.OSModels.Any(e => e.NumeroOS == id);
+    }
+
+    // Método para gerar o NumeroOS
+    private async Task<int> GenerateNumeroOS()
+    {
+        // Aqui você pode gerar um novo número sequencial baseado no maior número atual
+        var maxNumeroOS = await _context.OSModels.MaxAsync(o => (int?)o.NumeroOS) ?? 0;
+        return maxNumeroOS + 1;
     }
 }

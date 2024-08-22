@@ -1,6 +1,5 @@
 ﻿@model OSModel
 
-
 <h2 class="mt-2">Cadastrar Nova OS</h2>
 
 @if (TempData["OSExistente"] != null)
@@ -11,40 +10,51 @@
 }
 
 <form asp-action="Create">
-   
+
     <div class="form-group">
         <label asp-for="TituloServico" class="control-label">Titulo do Serviço</label>
         <input asp-for="TituloServico" class="form-control" />
+        @Html.ValidationMessageFor(model => model.TituloServico, "", new { @class = "text-danger" })
     </div>
+
     <div class="form-group">
-        <label asp-for="CNPJ" class="control-label"></label>
+        <label asp-for="CNPJ" class="control-label">CNPJ</label>
         <input asp-for="CNPJ" class="form-control" />
+        @Html.ValidationMessageFor(model => model.CNPJ, "", new { @class = "text-danger" })
     </div>
+
     <div class="form-group">
         <label asp-for="NomeDoCliente" class="control-label">Nome do Cliente</label>
         <input asp-for="NomeDoCliente" class="form-control" />
+        @Html.ValidationMessageFor(model => model.NomeDoCliente, "", new { @class = "text-danger" })
     </div>
+
     <div class="form-group">
-        <label asp-for="CPF" class="control-label"></label>
+        <label asp-for="CPF" class="control-label">CPF</label>
         <input asp-for="CPF" class="form-control" />
+        @Html.ValidationMessageFor(model => model.CPF, "", new { @class = "text-danger" })
     </div>
+
     <div class="form-group d-flex flex-row justify-content-between">
         <div class="d-flex flex-column w-100 me-2">
             <label asp-for="NomeDoPrestador" class="control-label">Nome do Prestador</label>
             <input asp-for="NomeDoPrestador" class="form-control w-100" />
+            @Html.ValidationMessageFor(model => model.NomeDoPrestador, "", new { @class = "text-danger" })
         </div>
         <div class="d-flex flex-column">
             <label asp-for="DataExecucaoServico" class="control-label">Data de Execução do Serviço</label>
             <input asp-for="DataExecucaoServico" class="form-control" />
+            @Html.ValidationMessageFor(model => model.DataExecucaoServico, "", new { @class = "text-danger" })
         </div>
     </div>
+
     <div class="form-group">
-        <label asp-for="ValorDoServico" class="control-label">Valor do Seviço</label>
+        <label asp-for="ValorDoServico" class="control-label">Valor do Serviço</label>
         <input asp-for="ValorDoServico" class="form-control" />
+        @Html.ValidationMessageFor(model => model.ValorDoServico, "", new { @class = "text-danger" })
     </div>
+
     <div class="form-group d-flex justify-content-end">
-        <input type="submit" value="Salvar" class="btn mt-3" style="background-color: #8fbc8f; color: white;" />
+        <input type="submit" value="Salvar" class="btn mt-3" style="background-color: #3cb371; color: white;" />
     </div>
-
-
 </form>
