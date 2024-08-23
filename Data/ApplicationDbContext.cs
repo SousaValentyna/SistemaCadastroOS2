@@ -13,7 +13,7 @@ public class ApplicationDbContext : DbContext
     {
         modelBuilder.Entity<OSModel>()
             .Property(o => o.NumeroOS)
-            .ValueGeneratedOnAdd(); // Configura o campo para ser gerado automaticamente
+            .ValueGeneratedOnAdd();
 
         base.OnModelCreating(modelBuilder);
     }

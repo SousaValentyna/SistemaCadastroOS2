@@ -33,7 +33,7 @@ public class OSModel
     public decimal ValorDoServico { get; set; }
 }
 
-// Validação personalizada de CPF
+// Validação de CPF
 public class CustomValidationCPFAttribute : ValidationAttribute
 {
     protected override ValidationResult IsValid(object value, ValidationContext validationContext)
@@ -57,7 +57,6 @@ public class CustomValidationCPFAttribute : ValidationAttribute
         if (cpf.Length != 11)
             return false;
 
-        // Verifica se todos os dígitos são iguais, que não é um CPF válido
         if (new string(cpf[0], cpf.Length) == cpf)
             return false;
 
@@ -95,7 +94,7 @@ public class CustomValidationCPFAttribute : ValidationAttribute
     }
 }
 
-// Validação personalizada de CNPJ
+// Validação de CNPJ
 public class CustomValidationCNPJAttribute : ValidationAttribute
 {
     protected override ValidationResult IsValid(object value, ValidationContext validationContext)
@@ -152,5 +151,3 @@ public class CustomValidationCNPJAttribute : ValidationAttribute
         return cnpj.EndsWith(digito);
     }
 }
-
-

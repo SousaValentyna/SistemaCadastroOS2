@@ -25,4 +25,3 @@ app.MapControllerRoute(
     pattern: "{controller=OS}/{action=Index}/{id?}");
 
 app.Run();
-
