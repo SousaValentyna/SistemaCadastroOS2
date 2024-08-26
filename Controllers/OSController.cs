@@ -2,14 +2,15 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 public class OSController : Controller
-{
+{   
     private readonly ApplicationDbContext _context;
-
+    
     public OSController(ApplicationDbContext context)
     {
         _context = context;
     }
 
+    // Método para filtrar e exibir a tela Index
     public async Task<IActionResult> Index(string searchString)
     {
         ViewData["CurrentFilter"] = searchString;
@@ -26,11 +27,13 @@ public class OSController : Controller
         return View(await osModels.ToListAsync());
     }
 
+    // Método para renderizar a View Create
     public IActionResult Create()
     {
         return View();
     }
 
+    // Método para criar um anova OS
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create([Bind("TituloServico,CNPJ,NomeDoCliente,CPF,NomeDoPrestador,DataExecucaoServico,ValorDoServico")] OSModel oSModel)
@@ -46,6 +49,7 @@ public class OSController : Controller
         return View(oSModel);
     }
 
+    // Método para renderizar a tela de Edit
     public async Task<IActionResult> Edit(int? id)
     {
         if (id == null)
@@ -61,6 +65,7 @@ public class OSController : Controller
         return View(oSModel);
     }
 
+    // Método para editar
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Edit(int id, [Bind("NumeroOS,TituloServico,CNPJ,NomeDoCliente,CPF,NomeDoPrestador,DataExecucaoServico,ValorDoServico")] OSModel oSModel)
@@ -86,7 +91,7 @@ public class OSController : Controller
                 }
                 else
                 {
-                    throw;
+                    throw; // exibe a mensagem de erro
                 }
             }
             return RedirectToAction(nameof(Index));
@@ -94,6 +99,7 @@ public class OSController : Controller
         return View(oSModel);
     }
 
+    // Método para renderizar a tela de deletar
     public async Task<IActionResult> Deletar(int? id)
     {
         if (id == null)
@@ -110,6 +116,7 @@ public class OSController : Controller
         return View(oSModel);
     }
 
+    // Método para deletar um registro
     [HttpPost, ActionName("Deletar")]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> DeleteConfirmed(int id)

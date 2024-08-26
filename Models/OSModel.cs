@@ -33,7 +33,7 @@ public class OSModel
     public decimal ValorDoServico { get; set; }
 }
 
-// Validação de CPF
+// Validação padrão de CPF
 public class CustomValidationCPFAttribute : ValidationAttribute
 {
     protected override ValidationResult IsValid(object value, ValidationContext validationContext)
@@ -94,7 +94,7 @@ public class CustomValidationCPFAttribute : ValidationAttribute
     }
 }
 
-// Validação de CNPJ
+// Validação padrão de CNPJ
 public class CustomValidationCNPJAttribute : ValidationAttribute
 {
     protected override ValidationResult IsValid(object value, ValidationContext validationContext)
