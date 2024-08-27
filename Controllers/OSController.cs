@@ -33,7 +33,7 @@ public class OSController : Controller
         return View();
     }
 
-    // Método para criar um anova OS
+    // Método para criar uma nova OS
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create([Bind("TituloServico,CNPJ,NomeDoCliente,CPF,NomeDoPrestador,DataExecucaoServico,ValorDoServico")] OSModel oSModel)
@@ -49,7 +49,7 @@ public class OSController : Controller
         return View(oSModel);
     }
 
-    // Método para renderizar a tela de Edit
+    // Método para renderizar a tela de Edição
     public async Task<IActionResult> Edit(int? id)
     {
         if (id == null)
