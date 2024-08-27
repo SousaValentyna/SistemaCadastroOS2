@@ -20,8 +20,10 @@ public class OSController : Controller
 
         if (!string.IsNullOrEmpty(searchString))
         {
-            osModels = osModels.Where(s => s.NumeroOS.ToString().Contains(searchString)
-                                           || s.TituloServico.Contains(searchString));
+            searchString = searchString.ToLower();
+
+            osModels = osModels.Where(s => s.NumeroOS.ToString().ToLower().Contains(searchString)
+                                           || s.TituloServico.ToLower().Contains(searchString));
         }
 
         return View(await osModels.ToListAsync());
